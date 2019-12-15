@@ -1,0 +1,14 @@
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Native Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let languageData of languageData.languages">
+        <td>{{languageData.name}}</td>
+        <td>{{languageData.nativeName}}</td>
+      </tr>
+    </tbody>
+  </table>
