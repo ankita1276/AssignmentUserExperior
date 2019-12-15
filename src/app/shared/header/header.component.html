@@ -1,0 +1,20 @@
+<header class="app-header navbar">
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <select class="form-control" (change)= countryChange($event.target.value)>
+                    <option *ngIf ="isCountrySelected" selected>select your country</option>
+                    <option [value]="country.alpha3Code"  *ngFor="let country of countryNames">
+                        {{country.name}}
+                    </option>
+                </select>
+            </div>
+            
+          </div>
+        </form>
+      </nav>
+      <div *ngIf ="!isCountrySelected" class="navbar navbar-light bg-light">
+          Country Selected : {{selectedCountry.name}}
+      </div>
+</header>
