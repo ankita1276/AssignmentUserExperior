@@ -7,14 +7,15 @@ import { CountryListService } from '../shared/services/country-list.service';
   styleUrls: ['./currencydetails.component.scss']
 })
 export class CurrencydetailsComponent implements OnInit {
-  currencyData : Object
+  // tslint:disable-next-line: ban-types
+  currencyData: Object
 
+  // tslint:disable-next-line: variable-name
   constructor(private _countryList_: CountryListService) { }
 
   ngOnInit() {
     this._countryList_.getSpecificCountryDetails().subscribe((res) => {
-      console.log(res.currencies[0].name);
-      this.currencyData = res ;
+      this.currencyData = res;
     });
   }
 }

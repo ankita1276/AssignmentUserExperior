@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryListService } from '../shared/services/country-list.service';
-import { filter} from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  countryData :Object;
+  // tslint:disable-next-line: ban-types
+  countryData: Object;
+  // tslint:disable-next-line: variable-name
   constructor(private _countryList_: CountryListService) { }
 
   filteredKeys = ['name', 'capital', 'region', 'subregion', 'population', 'area', 'alpha3Code'];
@@ -16,20 +18,15 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this._countryList_.getSpecificCountryDetails().subscribe((res) => {
-      const filtered= Object.keys(res).filter(
+      const filteredData = Object.keys(res).filter(
         key => this.filteredKeys.includes(key)).reduce(
-          (obj,key)=>{
+          (obj, key) => {
             obj[key] = res[key];
             return obj;
-          },{});
-          this.countryData = filtered;
-     // this.countryData.pipe(filter(num => num % 2 === 0));
-     console.log(this.countryData,"filtered");
-     
+          }, {});
+
+      this.countryData = filteredData;
     });
   }
-
-// this.filtered.reduce((obj, key) => ({ ...obj, [key]: this.raw[key] }), {});
-//     console.log(filtered);
 
 }

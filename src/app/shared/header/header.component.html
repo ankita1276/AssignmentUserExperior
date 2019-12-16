@@ -14,7 +14,10 @@
           </div>
         </form>
       </nav>
-      <div *ngIf ="!isCountrySelected" class="navbar navbar-light bg-light">
+      <div *ngIf ="!isCountrySelected && selectedCountry" class="navbar navbar-light bg-light">
           Country Selected : {{selectedCountry.name}}
       </div>
+      <div *ngIf ="isCountrySelected" class="navbar navbar-light bg-light">
+        Please Select Your Country
+    </div>
 </header>

@@ -8,12 +8,24 @@ import { CurrencydetailsComponent } from './currencydetails/currencydetails.comp
 const routes: Routes = [
   {
     path: '',
-    redirectTo: "/home",
+    redirectTo: '/home',
     pathMatch: 'full'
   },
-  {path:'home', component: HomeComponent},
-  {path:'language', component: LanguagedetailsComponent},
-  {path:'currency', component: CurrencydetailsComponent }
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+
+  {
+    path: 'language',
+    loadChildren: () => import('./languagedetails/language.module').then(m => m.LanguageModule)
+  },
+
+  {
+    path: 'currency',
+    loadChildren: () => import('./currencydetails/currencydetails.module').then(m => m.CurrencyModule)
+  },
+
 ];
 
 @NgModule({

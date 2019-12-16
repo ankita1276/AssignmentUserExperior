@@ -8,29 +8,26 @@ import { CountryListService } from '../services/country-list.service';
 })
 export class HeaderComponent implements OnInit {
   countryNames: any;
+  // tslint:disable-next-line: ban-types
   selectedCountry: Object;
-  isCountrySelected: boolean =true
+  isCountrySelected = true;
+  // tslint:disable-next-line: variable-name
   constructor(private _countryList_: CountryListService) { }
 
   ngOnInit() {
     this.getCountryList();
-    console.log(this._countryList_.getService());
   }
 
   getCountryList() {
     this._countryList_.getService().subscribe((res) => {
-      console.log(res);
       this.countryNames = res;
     });
   }
 
   countryChange(countrycode) {
-    console.log(countrycode,"code");
-    
     this.isCountrySelected = false;
     this._countryList_.getCountryDetails(countrycode).subscribe((res) => {
       this.selectedCountry = res;
-      console.log( this.selectedCountry);
       this._countryList_.setSpecificCountryDetails(this.selectedCountry);
     });
   }
